@@ -1,8 +1,8 @@
 //package com.explorify.explorify;
 //
-//import com.explorify.explorify.shared.GenericResponse;
-//import com.explorify.explorify.user.User;
-//import com.explorify.explorify.user.UserRepository;
+//import com.explorify.shared.GenericResponse;
+//import com.explorify.user.User;
+//import com.explorify.user.UserRepository;
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;

@@ -1,13 +1,72 @@
 spring:
-  datasource:
-    generate-unique-name: false
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  jpa:
-    properties:
-      javax:
-        persistence:
-          validation:
-            mode: none
+    datasource:
+        generate-unique-name: false
+    #  h2:
+    #    console:
+    #      enabled: true
+    #      path: /h2-console
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+    jpa:
+        properties:
+            javax:
+                persistence:
+                    validation:
+                        mode: none
+    data:
+        web:
+            pageable:
+                default-page-size: 10
+                max-page-size: 100
+    profiles:
+        active:
+            - dev
+---
+spring:
+    profiles: prod
+    datasource:
+        url: jdbc:h2:./explorify-prod
+        username: sa
+    jpa:
+        hibernate:
+            ddl-auto: update
+    h2:
+        console:
+            enabled: false
+explorify:
+    upload-path: uploads-prod
+#
+---
+#spring:
+#  profiles: dev
+#  datasource:
+#    url: jdbc:postgresql://explorifydatabase.crorsoogjug1.us-east-1.rds.amazonaws.com:5432/postgres
+#    username: postgres
+#    password: exppass123
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: update
+#explorify:
+#  upload-path: uploads-dev
+#---
+#spring:
+#  profiles: test
+#explorify:
+#  upload-path: uploads-test
+spring:
+    profiles: dev
+    datasource:
+        url: jdbc:h2:mem:explorify-dev
+explorify:
+    upload-path: uploads-dev
+---
+spring:
+    profiles: test
+explorify:
+    upload-path: uploads-test
